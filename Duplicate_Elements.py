@@ -8,16 +8,30 @@ Do not allocate extra space for another array, you must do this by modifying the
 
 # Create a function named sort_array_num
 def sort_array_nums(list):
-    # Create a for loop that is used to search for duplicates and remove them in the list
-    for arr in list:
-        if list.count(arr) > 1:
-            list.remove(arr)
+    # Sort the arrays first
+    list.sort()
 
-        else:
-            continue
+    # Check if the list is empty or has only one element
+    if len(list) <= 1:
+        return list
+    
+    # Initialize the index of the unique elements
+    unique_nums = 0
+    # Create a for loop that is used to search for duplicates and remove them in the list
+    for arr in range (1, len(list)):
+        if list[arr] != list[unique_nums]:
+
+            # Increment the index
+            unique_nums += 1
+            list[unique_nums] = list[arr] 
+
+    # Indicates the number of unique elements in the list
+    return unique_nums + 1
 
 # Function call
-list=[1, 2, 2, 3, 4, 5, 4, 1]
-sort_array_num(list)
+list=[10, 20, 20, 30, 40, 50, 40, 10]
+new_list = sort_array_nums(list)
 
-print(list)
+# Print the modified list and its new length
+print("Modified Array:", list[:new_list])
+print("New Length:", new_list)
